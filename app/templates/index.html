@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Details Table</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #eef2f7;
+            color: #333;
+        }
+    
+        h1 {
+            text-align: center;
+            padding: 20px 0;
+            color: #1a237e;
+            font-size: 2em;
+        }
+    
+        .button-group {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+    
+        .button-group a button {
+            background-color: #1a73e8;
+            color: white;
+            border: none;
+            padding: 10px 18px;
+            margin: 5px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: background-color 0.3s ease;
+        }
+    
+        .button-group a button:hover {
+            background-color: #0c47a1;
+        }
+    
+        form {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+    
+        form input[type="text"] {
+            padding: 8px;
+            width: 250px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            margin-right: 8px;
+            font-size: 14px;
+        }
+    
+        form button {
+            background-color: #388e3c;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            font-size: 14px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+    
+        form button:hover {
+            background-color: #2e7d32;
+        }
+    
+        table {
+            width: 95%;
+            margin: 0 auto 40px;
+            border-collapse: collapse;
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+    
+        th, td {
+            padding: 14px 12px;
+            border: 1px solid #e0e0e0;
+            text-align: center;
+        }
+    
+        th {
+            background-color: #1a237e;
+            color: white;
+            text-transform: uppercase;
+            font-size: 13px;
+        }
+    
+        td {
+            font-size: 14px;
+            color: #333;
+        }
+    
+        tr:nth-child(even) {
+            background-color: #f7f9fc;
+        }
+    
+        tr:hover {
+            background-color: #e3f2fd;
+        }
+    
+        td a {
+            color: #1a73e8;
+            text-decoration: none;
+            font-weight: 500;
+        }
+    
+        td a:hover {
+            text-decoration: underline;
+        }
+    </style>
+    
+</head>
+<body>
+    
+    <h1>Details of Python, Java, Query, Projects</h1>
+    <a href="{% url 'create' %}"><button type="submit">Create</button></a>
+    <a href="{% url 'py' %}"><button type="submit">Python Dev</button></a>
+    <a href="{% url 'jsp' %}"><button type="submit">Java Dev</button></a>
+    <a href="{% url 'pytst' %}"><button type="submit">Python Testing</button></a>
+    <a href="{% url 'jtst' %}"><button type="submit">Java Testing</button></a>
+    <a href="{% url 'bank' %}"><button type="submit">ProSpyders</button></a>
+    <form action="" method="POST">
+        {% csrf_token %}
+        <input type="text" name="search"> <button type="submit">Search</button>
+    </form>
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Qualification</th>
+            <th>Gender</th>
+            <th>Age</th>
+            <th>Year of Passing</th>
+            <th>Course</th>
+            <th>Skills</th>
+            <th>Mock Rating</th>
+            <th>Date of Birth</th>
+            <th>Address</th>
+        </tr>
+        
+        {% for i in data1 %}
+        <tr>
+            <td><a href="{% url 'details' i.id %}">{{ i.name }}</a></td>
+            <td>{{ i.qualification }}</td>
+            <td>{{ i.gender }}</td>
+            <td>{{ i.age }}</td>
+            <td>{{ i.yop }}</td>
+            <td>{{ i.course }}</td>
+            <td>{{ i.skills }}</td>
+            <td>{{ i.mock_rating }}</td>
+            <td>{{ i.dob }}</td>
+            <td>{{ i.address }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

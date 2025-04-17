@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* Add this CSS to a <style> tag in your HTML or link to a CSS file */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.card {
+    background: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 350px;
+    padding: 20px;
+    text-align: left;
+}
+
+.card .title h2 {
+    margin: 0 0 10px;
+    font-size: 24px;
+    color: #333;
+    text-align: center;
+}
+
+.card p {
+    margin: 8px 0;
+    font-size: 16px;
+    color: #555;
+}
+
+.card p strong {
+    color: #000;
+}
+
+.card a {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 10px 15px;
+    background-color: #007bff;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.card a:hover {
+    background-color: #0056b3;
+}
+
+    </style>
+</head>
+<body>
+    <div class="card">
+        <div class="title">
+            <h2>{{ data1.name }}</h2>
+        </div>
+        <!-- <img src="https://pyspiders.com/_nuxt/img/logo_pyspiders.4f56184.png" alt="Student Logo"> -->
+        <p><strong>Qualification:</strong> {{ data1.qualification }}</p>
+        <p><strong>Gender:</strong> {{ data1.gender }}</p>
+        <p><strong>Age:</strong> {{ data1.age }}</p>
+        <p><strong>YOP:</strong> {{ data1.yop }}</p>
+        <p><strong>Course:</strong> {{ data1.course }}</p>
+        <p><strong>Skills:</strong> {{ data1.skills }}</p>
+        <p><strong>DOB:</strong> {{ data1.dob }}</p>
+        <p><strong>Mock Rating:</strong> {{ data1.mock_rating }}</p>
+        <p><strong>Address:</strong> {{ data1.address }}</p>
+        <a href="{% url 'edit' data1.id %}">EDIT</a> <br>
+        <form action="" method="POST">
+            {% csrf_token %}
+            <button type="submit">delete</button>    
+        </form>
+    </div>
+</body>
+</html>

@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Details - PySpiders</title>
+    <style>
+        /* General Styles */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        h1, p {
+            margin: 0;
+        }
+        center {
+            margin-top: 20px;
+        }
+        img {
+            max-width: 100px;
+        }
+
+        /* Card Container */
+        #d1 {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+            margin: 20px;
+        }
+
+        /* Card Style */
+        .card {
+            background-color: #ffffff;
+            border-radius: 15px;
+            border: 1px solid #ddd;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+        }
+
+        .card img {
+            margin-bottom: 15px;
+            border-radius: 50%;
+            height: 80px;
+            width: 80px;
+        }
+
+        .card p {
+            margin: 5px 0;
+            color: #555;
+            font-size: 14px;
+        }
+
+        /* Title and Info Section */
+        .title {
+            background-color: #007BFF;
+            color: #ffffff;
+            padding: 10px;
+            border-radius: 15px;
+            margin-bottom: 10px;
+        }
+
+        .title h2 {
+            margin: 0;
+        }
+
+        /* Table Style (Hidden by default for Cards) */
+        table {
+            width: 90%;
+            margin: 30px auto;
+            border-collapse: collapse;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        table th, table td {
+            padding: 10px 15px;
+            border: 1px solid #ddd;
+            text-align: center;
+        }
+        table th {
+            background-color: #007BFF;
+            color: #ffffff;
+        }
+        table tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        table tr:hover {
+            background-color: #f1f1f1;
+        }
+    </style>
+</head>
+<body>
+    <center>
+        <h1><img src="https://th.bing.com/th/id/OIP.ErH_CDa-yOBmRCvfDzjytQHaHa?rs=1&pid=ImgDetMain" alt="PySpiders Logo"></h1>
+        <p>Punjagutta, Telangana, 1st Floor, Road 1, Banjara Hills Main Rd, Punjagutta, Hyderabad, Telangana 500082</p>
+    </center>
+
+    <!-- Cards Section -->
+    <div id="d1">
+        {% for i in data %}
+        {% if i.course == 'Banking Operations' %}
+        <div class="card">
+            <div class="title">
+                <h2>{{ i.name }}</h2>
+            </div>
+            <img src="https://th.bing.com/th/id/OIP.ErH_CDa-yOBmRCvfDzjytQHaHa?rs=1&pid=ImgDetMain" alt="Student Logo">
+            <p><strong>Qualification:</strong> {{ i.qualification }}</p>
+            <p><strong>Gender:</strong> {{ i.gender }}</p>
+            <p><strong>Age:</strong> {{ i.age }}</p>
+            <p><strong>YOP:</strong> {{ i.yop }}</p>
+            <p><strong>Course:</strong> {{ i.course }}</p>
+            <p><strong>Skills:</strong> {{ i.skills }}</p>
+            <p><strong>DOB:</strong> {{ i.dob }}</p>
+            <p><strong>Mock Rating:</strong> {{ i.mock_rating }}</p>
+            <p><strong>Address:</strong> {{ i.address }}</p>
+        </div>
+        {% endif %}
+        {% endfor %}
+    </div>
+
+    
+</body>
+</html>
